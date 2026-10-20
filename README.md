@@ -1,60 +1,47 @@
-# Configured application details
+# Rclone personal OAuth website — updated package
 
-- Application: Rclone
-- Effective date: 20-10-2026
-- Contact: rclonegdrivesync@gmail.com
-- Home: https://rclonegdrivesync.github.io/
-- Privacy: https://rclonegdrivesync.github.io/privacy.html
-- For this root GitHub Pages URL, create the repository `rclonegdrivesync.github.io` under the GitHub account `rclonegdrivesync`.
+Application: Rclone
+Effective date: 20-10-2026
+Support: rclonegdrivesync@gmail.com
 
-These details are already applied to both HTML pages. The configured scopes and actual data handling still require owner verification. The generic customization instructions below are retained as a reference.
+## Public URLs
 
-# Personal rclone OAuth website
+- Home: https://rclonesync.github.io/rclone/
+- Privacy: https://rclonesync.github.io/rclone/privacy.html
+- Terms: https://rclonesync.github.io/rclone/terms.html
 
-Two static pages, shared CSS, no JavaScript, dependencies, build step, or external fonts. Open index.html locally to preview. All internal links are relative, including for GitHub project Pages URLs.
+## Before submitting to Google
 
-## 1. Customize before publication
+The privacy policy has expanded disclosures based on https://support.google.com/cloud/answer/13806988. Google requires an actual app-specific policy, not a template. The owner must confirm the exact OAuth scopes and local-only architecture, resolve the reported https://www.googleapis.com/auth/docs scope (not verified in current documentation), confirm whether the metadata scope is needed alongside full drive access, and remove the setup/verification notices only once the statements match actual behavior. Check logs, caches, backups, destinations, encryption settings and support-message retention. No unverified security or compliance guarantee is made. Review the Limited Use commitment and terms against actual practice. Update the effective date if the revised policy takes effect after 20-10-2026.
 
-Use a text editor to replace placeholders in BOTH HTML files:
+## Deploy or replace the existing site
 
-- `[APP_NAME]`: the exact application display name used in Google’s consent screen.
-- `[SUPPORT_EMAIL]` and the literal `SUPPORT_EMAIL` inside mailto links: a monitored address you own.
-- `[EFFECTIVE_DATE]`: the date the verified policy takes effect, for example 2026-10-20.
-- `[GITHUB_PAGES_URL]`: the final public HTTPS home URL, including repository path and trailing slash, for example https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/.
-- `[CONFIGURED_SCOPES_AND_PURPOSE]`: exact configured Google scope URLs and their purposes. Rewrite the section to state actual requested permissions; remove unused examples if they would confuse readers.
+1. Extract the ZIP.
+2. Under GitHub account rclonesync, open repository rclone.
+3. Upload/replace index.html, privacy.html, terms.html, styles.css and .nojekyll at the repository root; commit to main.
+4. In Settings → Pages choose Deploy from a branch, main, /(root), then Save. If already configured this way, the commit should trigger redeployment.
+5. Wait for the Pages deployment to succeed. Check all three public URLs, navigation and support links on desktop and mobile.
+6. In Google Auth Platform branding/consent settings use the Home, Privacy and Terms URLs above. Ensure app name and support contact match the actual OAuth app. Meet applicable domain ownership verification requirements; publishing these pages does not guarantee Google verification.
+7. If the privacy URL is unchanged, respond to the verification correspondence after the live policy has been updated, as Google’s guidance directs. If the URL changes, update the consent settings as well.
 
-Verify the consent screen, rclone configuration and runtime overrides, OAuth scopes, logs, caches, destinations, backups, token handling, and support-message retention. Never paste credentials into the site. If rclone runs on a NAS, server, or another machine, explain that actual storage location. Revise the privacy promises if your deployment includes additional services. Remove the owner-setup notice on Home and replace the policy verification notice with a factual description of your verified configuration once this review is complete.
+Do not use GitHub Pages as an OAuth callback. Follow https://rclone.org/drive/#making-your-own-client-id for local rclone OAuth client setup. Never upload secrets, tokens or rclone configuration files.
 
-## 2. Deploy using GitHub Pages (no terminal needed)
+## Checks
 
-1. Sign into GitHub and create a repository, for example `personal-drive-app`. A public repository is the simplest option; Pages availability for private repositories depends on your plan.
-2. Extract this ZIP. In the repository choose **Add file → Upload files**. Upload `index.html`, `privacy.html`, `styles.css`, and `.nojekyll` to the repository ROOT, not inside an extra folder. Commit to `main`. README.md is optional. Ensure hidden files are visible if uploading `.nojekyll`; it is included in the ZIP.
-3. Open **Settings → Pages**. Under **Build and deployment**, select **Deploy from a branch**, choose **main** and **/(root)**, then **Save**.
-4. Wait for the Pages deployment to finish. Use the exact URL GitHub displays. For a project repository it is usually `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/`. For a repository named `YOUR_USERNAME.github.io`, it is usually `https://YOUR_USERNAME.github.io/`.
-5. Update `[GITHUB_PAGES_URL]` with that URL and commit. Check both pages on desktop and mobile, navigation, and the support email links. Changes redeploy automatically.
+This package uses static HTML/CSS, relative links, no JavaScript or third-party fonts. Open index.html locally to preview. The live site could not be retrieved during this revision; this download does not change the hosted repository.
 
-Home URL: `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/`
-Privacy URL: `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/privacy.html`
+## Reported scopes
 
-## 3. Use with your Google OAuth application
+- https://www.googleapis.com/auth/docs — reported, requires validation; not silently replaced with documents.
+- https://www.googleapis.com/auth/drive
+- https://www.googleapis.com/auth/drive.metadata.readonly
 
-Enable the Google Drive API in your Google Cloud project. Configure Google Auth Platform branding, audience, data access, and OAuth client settings for your actual use case. Enter the public Home and Privacy URLs in the corresponding consent/branding fields. Keep app name, support contact, scopes, and policy consistent.
+The operator has not yet confirmed whether use is exclusively local with no backend or additional destinations. The verification notice remains for this reason.
 
-Follow rclone’s official “Making your own client_id” instructions for the appropriate OAuth client type (typically Desktop app for local rclone). The GitHub Pages website is informational: DO NOT use it as an OAuth callback or put client secrets or tokens in HTML, repository files, commits, or screenshots. Domain ownership, authorized-domain rules, testing restrictions, publishing, and verification requirements depend on Google’s current rules and your app’s scopes/audience. A published website does not itself publish or verify an OAuth app, remove consent warnings, or guarantee approval. If Google requires domain ownership verification that a shared github.io address cannot satisfy, use a domain you control.
+## Confirmed deployment architecture
 
-## Files
+rclone runs only on the user’s own computer. Transfers are between that computer and Google Drive only. There is no backend or additional cloud storage destination. Public policy setup notices have been removed on this basis. The auth/docs permission description now reflects the operator’s supplied Google consent description; keep it consistent with the actual consent configuration and remove redundant scopes if not needed.
 
-- index.html — Home
-- privacy.html — Application Privacy Policy
-- styles.css — responsive layout and accessible navigation
-- .nojekyll — serve as plain static files
-- README.md — customization and deployment guide
+## Custom domain pending
 
-## Official references
-
-- https://docs.github.com/en/pages/quickstart
-- https://rclone.org/drive/#making-your-own-client-id
-- https://rclone.org/docs/#config-config-file
-- https://developers.google.com/workspace/drive/api/guides/api-specific-auth
-
-This independent template uses no rclone or Google logos and claims no affiliation. It describes an intended configuration, not verified behavior of your installed app.
+The owner has a domain in Cloudflare but has not yet supplied its name. Current HTML URLs still use the existing GitHub Pages address. Before resubmission, update all website URLs to the exact custom domain, configure GitHub Pages custom-domain hosting and HTTPS, and complete Google Search Console DNS Domain-property verification using a Google Cloud Project Owner account. Keep the DNS verification record. Wait at least the 24 hours specified by the verification rejection, and update Google Auth Platform Home, Privacy, Terms, and authorized-domain settings. Do not submit the old github.io URL as proof of DNS ownership.
